@@ -9,9 +9,6 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
     },
-    mainView: {
-        marginTop: 63
-    },
     navBar: {
         borderBottomWidth: 1,
         borderBottomColor: "#ddd",
@@ -96,6 +93,7 @@ const styles = StyleSheet.create({
         width: Util.size.width,
         flexGrow: 1,
         alignSelf: 'stretch',
+        resizeMode: 'contain',
     }
 });
 
@@ -114,11 +112,19 @@ export default class Home extends Component {
                 {
                     key: 0,
                     title: "A stopwatch",
-                    isFA: false,
+                    isFA: true,
                     icon: "ios-stopwatch",
                     size: 48,
                     color: "#ff856c",
                     hideNav: false,
+                }, {
+                    key: 1,
+                    title: "A weather app",
+                    isFA: true,
+                    icon: "ios-partly-sunny",
+                    size: 60,
+                    color: "#90bdc1",
+                    hideNav: true,
                 }
             ]
         }
@@ -127,7 +133,7 @@ export default class Home extends Component {
     _jumpToDemo = (index) => {
         var navigate = this.props.navigation.navigate;
         var demo = this.state.demos[index];
-        navigate('Demo1', demo);
+        navigate('Demo' + index, demo);
     }
 
     render() {
@@ -145,11 +151,13 @@ export default class Home extends Component {
                         <Text style={styles.boxText}>
                             Demo{index + 1}
                         </Text>
-                        {demo.isFA ?
-                            <IconFA size={demo.size} name={demo.icon} style={[styles.boxIcon, { color: demo.color }]}></IconFA>
+                        {/* {demo.isFA ?
+                            <IconFA size={demo.size} name='clock-o' style={[styles.boxIcon, { color: demo.color }]}></IconFA>
                             :
-                            <Icon size={demo.size} name={demo.icon} style={[styles.boxIcon, { color: demo.color }]}></Icon>
-                        }
+                            <Icon size={demo.size} name='clock-o' style={[styles.boxIcon, { color: demo.color }]}></Icon>
+                        } */}
+
+                    <Icon name="ios-person" size={30} color="#4F8EF7" />
                     </View>
                 </TouchableHighlight>
             )
@@ -158,10 +166,16 @@ export default class Home extends Component {
             <ScrollView style={styles.mainView} title={this.props.title}>
                 <Swiper height={150} showsButtons={false} autoplay={true}
                     activeDot={<View style={{ backgroundColor: 'rgba(255,255,255,0.8)', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3, }} />}>
-                    <TouchableHighlight onPress={() => this._jumpToDay(0)}>
+                    <TouchableHighlight onPress={() => this._jumpToDemo(0)}>
                         <View style={styles.slide}>
-                            <Image style={styles.image} source={{ uri: 'day1' }}></Image>
+                            <Image style={styles.image} source={require('../../img/day1.png')}></Image>
                             <Text style={styles.slideText}>Day1: Timer</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight onPress={() => this._jumpToDemo(1)}>
+                        <View style={styles.slide}>
+                            <Image style={styles.image} source={require('../../img/day2.png')}></Image>
+                            <Text style={styles.slideText}>Day2: Weather</Text>
                         </View>
                     </TouchableHighlight>
                 </Swiper>

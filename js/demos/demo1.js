@@ -8,8 +8,7 @@ import Util from '../utils';
 const styles = StyleSheet.create({
     watchContainer: {
         alignItems: "center",
-        backgroundColor: "#f3f3f3",
-        marginTop: 60,
+        backgroundColor: "#f3f3f3"
     },
     watchFaceContainer: {
         width: Util.size.width,
@@ -217,10 +216,12 @@ class WatchRecord extends Component {
     }
 
     render() {
-        <FlatList
-            data={this.props.record}
-            renderItem={this._renderItem}
-        />
+        return (
+            <FlatList
+                data={this.props.record}
+                renderItem={this._renderItem}
+            />
+        );
     }
 }
 
@@ -275,7 +276,7 @@ export default class Watch extends Component {
             });
         }
 
-        let milSeciond, second, minute, countingTime, secmilSecond, secsecond, secminute, seccountingTime;
+        let milSecond, second, minute, countingTime, secmilSecond, secsecond, secminute, seccountingTime;
 
         let interval = setInterval(
             () => {
