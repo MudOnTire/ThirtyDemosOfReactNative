@@ -112,7 +112,7 @@ export default class Home extends Component {
                 {
                     key: 0,
                     title: "A stopwatch",
-                    isFA: true,
+                    isFA: false,
                     icon: "ios-stopwatch",
                     size: 48,
                     color: "#ff856c",
@@ -120,7 +120,7 @@ export default class Home extends Component {
                 }, {
                     key: 1,
                     title: "A weather app",
-                    isFA: true,
+                    isFA: false,
                     icon: "ios-partly-sunny",
                     size: 60,
                     color: "#90bdc1",
@@ -133,7 +133,7 @@ export default class Home extends Component {
     _jumpToDemo = (index) => {
         var navigate = this.props.navigation.navigate;
         var demo = this.state.demos[index];
-        navigate('Demo' + index, demo);
+        navigate('Demo' + (index + 1), demo);
     }
 
     render() {
@@ -151,13 +151,12 @@ export default class Home extends Component {
                         <Text style={styles.boxText}>
                             Demo{index + 1}
                         </Text>
-                        {/* {demo.isFA ?
-                            <IconFA size={demo.size} name='clock-o' style={[styles.boxIcon, { color: demo.color }]}></IconFA>
-                            :
-                            <Icon size={demo.size} name='clock-o' style={[styles.boxIcon, { color: demo.color }]}></Icon>
-                        } */}
-
-                    <Icon name="ios-person" size={30} color="#4F8EF7" />
+                        {
+                            demo.isFA ?
+                                <IconFA size={demo.size} name={demo.icon} style={[styles.boxIcon, { color: demo.color }]}></IconFA>
+                                :
+                                <Icon size={demo.size} name={demo.icon} style={[styles.boxIcon, { color: demo.color }]}></Icon>
+                        }
                     </View>
                 </TouchableHighlight>
             )
