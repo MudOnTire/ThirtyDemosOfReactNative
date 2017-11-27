@@ -132,6 +132,7 @@ class WatchControl extends Component {
     }
 
     _startWatch = () => {
+        //如果是停止状态则启动
         if (!this.state.watchOn) {
             this.props.startWatch();
             this.setState({
@@ -142,6 +143,7 @@ class WatchControl extends Component {
                 underlayColor: '#eee',
             });
         } else {
+            //如果是启动则停止
             this.props.stopWatch();
             this.setState({
                 watchOn: false,
