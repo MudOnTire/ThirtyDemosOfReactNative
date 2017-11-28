@@ -109,7 +109,6 @@ export default class Home extends Component {
                     icon: "ios-stopwatch",
                     size: 48,
                     color: "#ff856c",
-                    hideNav: false,
                 }, {
                     key: 1,
                     title: "A weather app",
@@ -117,7 +116,6 @@ export default class Home extends Component {
                     icon: "ios-partly-sunny",
                     size: 60,
                     color: "#90bdc1",
-                    hideNav: true,
                 }, {
                     key: 2,
                     title: 'A twitter demo',
@@ -125,7 +123,20 @@ export default class Home extends Component {
                     icon: 'logo-twitter',
                     size: 50,
                     color: "#2aa2ef",
-                    hideNav: true,
+                }, {
+                    key: 3,
+                    title: 'Cocoapods',
+                    isFA: true,
+                    icon: 'contao',
+                    size: 50,
+                    color: "#ff9a05",
+                },{
+                    key:4,
+                    title:'Find my location',
+                    isFA:false,
+                    icon:'md-pin',
+                    size:50,
+                    color:'#00d204',
                 }
             ]
         }

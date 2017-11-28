@@ -10,7 +10,7 @@ const navigator = StackNavigator({
     Home: { 
         screen: Home,
         navigationOptions: ({ navigation }) => ({
-            title: "30 demos for 30 days"
+            title: "30 demos of React-Native for 30 days"
         }),
     },
     Demo1: {
