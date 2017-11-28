@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         width: Util.size.width,
         left: 0,
         top: 20,
-        height: Util.size.height - 136
+        height: Util.size.height - 78
     },
     headInfo: {
         paddingTop: 70,

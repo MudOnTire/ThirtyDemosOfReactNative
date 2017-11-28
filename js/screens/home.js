@@ -98,13 +98,6 @@ const styles = StyleSheet.create({
 });
 
 export default class Home extends Component {
-
-    static navigationOptions = ({ navigation }) => {
-        return {
-            title: '30 demos for 30 days'
-        }
-    }
-
     constructor() {
         super();
         this.state = {
@@ -124,6 +117,14 @@ export default class Home extends Component {
                     icon: "ios-partly-sunny",
                     size: 60,
                     color: "#90bdc1",
+                    hideNav: true,
+                }, {
+                    key: 2,
+                    title: 'A twitter demo',
+                    isFA: false,
+                    icon: 'logo-twitter',
+                    size: 50,
+                    color: "#2aa2ef",
                     hideNav: true,
                 }
             ]
