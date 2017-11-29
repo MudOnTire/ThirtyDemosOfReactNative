@@ -73,8 +73,8 @@ class MoveableCircle extends Component {
                 if (this._circleStyles.style.left < 0) {
                     this._circleStyles.style.left = 0;
                 }
-                if (this._circleStyles.style.top < 5) {
-                    this._circleStyles.style.top = 5;
+                if (this._circleStyles.style.top < -10) {
+                    this._circleStyles.style.top = -10;
                 }
                 if (this._circleStyles.style.left > this._maxLeft) {
                     this._circleStyles.style.left = this._maxLeft;
