@@ -130,13 +130,27 @@ export default class Home extends Component {
                     icon: 'contao',
                     size: 50,
                     color: "#ff9a05",
-                },{
-                    key:4,
-                    title:'Find my location',
-                    isFA:false,
-                    icon:'md-pin',
-                    size:50,
-                    color:'#00d204',
+                }, {
+                    key: 4,
+                    title: 'Find my location',
+                    isFA: false,
+                    icon: 'md-pin',
+                    size: 50,
+                    color: '#00d204',
+                }, {
+                    key: 5,
+                    title: 'Spotify',
+                    isFA: true,
+                    icon: 'spotify',
+                    size: 50,
+                    color: '#777',
+                }, {
+                    key: 6,
+                    title: 'Moveable Circle',
+                    isFA: false,
+                    icon: 'ios-baseball',
+                    size: 50,
+                    color: "#5e2a06",
                 }
             ]
         }
