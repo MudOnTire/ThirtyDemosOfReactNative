@@ -151,6 +151,13 @@ export default class Home extends Component {
                     icon: 'ios-baseball',
                     size: 50,
                     color: "#5e2a06",
+                }, {
+                    key: 7,
+                    title: 'Swipe left Menu',
+                    isFA: true,
+                    icon: 'google',
+                    size: 50,
+                    color: '#4285f4',
                 }
             ]
         }
