@@ -26,19 +26,19 @@ var styles = StyleSheet.create({
     sideMenu: {
         position: 'absolute',
         width: sideMenuWidth + 20,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
     },
     sideMenuContainer: {
         width: sideMenuWidth,
         height: contentHeight,
         backgroundColor: '#fff',
-        shadowColor: '#000',
-        shadowOpacity: 0,
-        shadowRadius: 5,
+        shadowColor: '#ff0000',
         shadowOffset: {
-            height: 10,
-            width: 10,
-        }
+          width: 3,
+          height: 0
+        },
+        shadowRadius: 5,
+        shadowOpacity: 0.5
     },
     sideMenuHeader: {
         paddingTop: 15,
@@ -74,25 +74,25 @@ var styles = StyleSheet.create({
         lineHeight: 24,
     },
     btnContainer: {
-        paddingTop:10,
-        borderStyle:'dotted',
-        borderBottomWidth:1,
-        borderBottomColor:'#ccc',
+        paddingTop: 10,
+        borderStyle: 'dotted',
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
     },
     btn: {
-        marginLeft:30,
-        flexDirection:'row',
-        height:44,
-        alignItems:'center',
+        marginLeft: 30,
+        flexDirection: 'row',
+        height: 44,
+        alignItems: 'center',
     },
     btnIcon: {
-        width:60,
-        fontWeight:'bold',
-        color:'#333',
+        width: 60,
+        fontWeight: 'bold',
+        color: '#333',
     },
     btnText: {
-        fontWeight:'bold',
-        color:'#333',
+        fontWeight: 'bold',
+        color: '#333',
     }
 });
 
@@ -107,7 +107,7 @@ class Menu extends Component {
 
     render() {
         return (
-            <View style={styles.sideMenuContainer}>
+            <View style={styles.sideMenuContainer} elevation={5}>
                 <View style={styles.sideMenuHeader}>
                     <View style={styles.imgContainer}>
                         <Image source={this.props.senary} style={styles.senary}></Image>
@@ -120,57 +120,57 @@ class Menu extends Component {
                 </View>
 
                 <View style={styles.btnContainer}>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="map-marker" size={15}></Icon>
-                    <Text style={styles.btnText}>你的地点</Text>
-                  </View>
-                </TouchableHighlight>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="pencil-square" size={15}></Icon>
-                    <Text style={styles.btnText}>你的贡献</Text>
-                  </View>
-                </TouchableHighlight>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="product-hunt" size={15}></Icon>
-                    <Text style={styles.btnText}>离线区域</Text>
-                  </View>
-                </TouchableHighlight>
-              </View>
-              <View style={styles.btnContainer}>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="road" size={15}></Icon>
-                    <Text style={styles.btnText}>实时路况</Text>
-                  </View>
-                </TouchableHighlight>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="bus" size={15}></Icon>
-                    <Text style={styles.btnText}>公交线路</Text>
-                  </View>
-                </TouchableHighlight>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="bicycle" size={15}></Icon>
-                    <Text style={styles.btnText}>骑车线路</Text>
-                  </View>
-                </TouchableHighlight>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="photo" size={15}></Icon>
-                    <Text style={styles.btnText}>卫星图像</Text>
-                  </View>
-                </TouchableHighlight>
-                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
-                  <View style={styles.btn}>
-                    <Icon style={styles.btnIcon} name="tree" size={15}></Icon>
-                    <Text style={styles.btnText}>地形</Text>
-                  </View>
-                </TouchableHighlight>
-              </View>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="map-marker" size={15}></Icon>
+                            <Text style={styles.btnText}>你的地点</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="pencil-square" size={15}></Icon>
+                            <Text style={styles.btnText}>你的贡献</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="product-hunt" size={15}></Icon>
+                            <Text style={styles.btnText}>离线区域</Text>
+                        </View>
+                    </TouchableHighlight>
+                </View>
+                <View style={styles.btnContainer}>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="road" size={15}></Icon>
+                            <Text style={styles.btnText}>实时路况</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="bus" size={15}></Icon>
+                            <Text style={styles.btnText}>公交线路</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="bicycle" size={15}></Icon>
+                            <Text style={styles.btnText}>骑车线路</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="photo" size={15}></Icon>
+                            <Text style={styles.btnText}>卫星图像</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                        <View style={styles.btn}>
+                            <Icon style={styles.btnIcon} name="tree" size={15}></Icon>
+                            <Text style={styles.btnText}>地形</Text>
+                        </View>
+                    </TouchableHighlight>
+                </View>
             </View>
         )
     }
@@ -181,6 +181,7 @@ export default class Demo8 extends Component {
         super();
         this.state = {
             showDrop: false,
+            menuLeft: new Animated.Value(0),
         }
     }
 
@@ -198,21 +199,32 @@ export default class Demo8 extends Component {
         this.drop && this.drop.setNativeProps(this._dropStyles);
     }
 
+    _resetAfterHideSideMenu() {
+        this._menuStyles.style.left = this._minLeft;
+        this._dropStyles.style.opacity = 0;
+        this._previousLeft = this._minLeft;
+        this._previousOpacity = 0;
+        this.setState({
+            showDrop: false,
+        });
+    }
+
+    _resetAfterShowSideMenu() {
+        this._menuStyles.style.left = 0;
+        this._dropStyles.style.opacity = 1;
+        this._previousLeft = 0;
+        this._previousOpacity = 1;
+        this.setState({
+            menuLeft: new Animated.Value(0)
+        });
+    }
+
     _endMove(event, gestureState) {
         if (gestureState.vx < 0 || gestureState.dx < 0) {
-            this._menuStyles.style.left = this._minLeft;
-            this._dropStyles.style.opacity = 0;
-            this._previousLeft = this._minLeft;
-            this._previousOpacity = 0;
-            this.setState({
-                showDrop: false,
-            });
+            this._resetAfterHideSideMenu();
         }
         if (gestureState.vx > 0 || gestureState.dx > 0) {
-            this._menuStyles.style.left = 0;
-            this._dropStyles.style.opacity = 1;
-            this._previousLeft = 0;
-            this._previousOpacity = 1;
+            this._resetAfterShowSideMenu();
         }
         this._updatePosition();
         LayoutAnimation.configureNext(this._CustomLayoutLinear);
@@ -271,7 +283,14 @@ export default class Demo8 extends Component {
     }
 
     _hideSideMenu = () => {
-
+        Animated.timing(
+            this.state.menuLeft,
+            {
+                toValue: 1,
+                duration: 300,
+            }
+        ).start();
+        this._resetAfterHideSideMenu();
     }
 
     render() {
@@ -290,13 +309,18 @@ export default class Demo8 extends Component {
                         :
                         <View></View>
                 }
-                <View
+                <Animated.View
                     {...this._panResponder.panHandlers}
-                    style={styles.sideMenu}
+                    style={[styles.sideMenu, {
+                        left: this.state.menuLeft.interpolate({
+                            inputRange: [0, 1],
+                            outputRange: [0, -1 * sideMenuWidth]
+                        })
+                    }]}
                     ref={(menu) => { this.menu = menu }}
                 >
                     <Menu></Menu>
-                </View>
+                </Animated.View>
             </View>
         )
     }
