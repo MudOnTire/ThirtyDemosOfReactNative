@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     tabs: {
         flexDirection: 'row',
-        paddingTop: 5,
+        paddingTop: 7,
         borderWidth: 1,
         borderTopWidth: 0,
         borderLeftWidth: 0,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: 10,
+        paddingBottom: 8,
     },
     tabText: {
         color: 'rgb(159,159,159)'
@@ -64,18 +64,18 @@ class FacebookTabBar extends Component {
 
     render() {
         return <View style={[styles.tabs, this.props.style,]}>
-            {this.props.tabs.map((tab, i) => {
+            {this.props.tabs.map((tab, index) => {
                 console.log(tab);
                 return (
-                    <TouchableOpacity 
-                        key={tab.title} 
-                        onPress={() => setTimeout(() => this.props.goToPage(i), 0)} 
+                    <TouchableOpacity
+                        key={tab.title}
+                        onPress={() => setTimeout(() => this.props.goToPage(i), 0)}
                         style={styles.tab}>
                         <Icon
                             name={tab.icon}
                             size={30}
-                            color={this.props.activeTab === i ? 'rgb(49,149,215)' : 'rgb(159,159,159)'}
-                            ref={(icon) => { this.tabIcons[i] = icon; }}
+                            color={this.props.activeTab === index ? 'rgb(49,149,215)' : 'rgb(159,159,159)'}
+                            ref={(icon) => { this.tabIcons[index] = icon; }}
                         />
                         <Text style={styles.tabText}>{tab.title}</Text>
                     </TouchableOpacity>

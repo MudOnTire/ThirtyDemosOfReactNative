@@ -165,6 +165,13 @@ export default class Home extends Component {
                     icon: 'twitter-square',
                     size: 50,
                     color: '#2aa2ef'
+                }, {
+                    key: 24,
+                    title: 'Custom in-app browser',
+                    isFA: false,
+                    icon: 'ios-globe',
+                    size: 50,
+                    color: '#00ab6b',
                 }
             ]
         }
