@@ -158,6 +158,13 @@ export default class Home extends Component {
                     icon: 'google',
                     size: 50,
                     color: '#4285f4',
+                }, {
+                    key: 8,
+                    title: 'Twitter Parallax View',
+                    isFA: true,
+                    icon: 'twitter-square',
+                    size: 50,
+                    color: '#2aa2ef'
                 }
             ]
         }
