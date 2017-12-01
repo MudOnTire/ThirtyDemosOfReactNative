@@ -78,6 +78,21 @@ class Sphere extends Component {
     }
 }
 
+class Hello extends Component {
+    render() {
+        return (
+            <WebView
+                automaticallyAdjustContentInsets={false}
+                source={require('../../web/html/demo3.html')}
+                javaScriptEnabled={true}
+                domStorageEnabled={true}
+                decelerationRate='normal'
+                startInLoadingState={true}
+            />
+        )
+    }
+}
+
 class Demo23 extends Component {
 
     _showWebPage = (pageName) => {
@@ -114,6 +129,19 @@ class Demo23 extends Component {
                         </View>
                     </View>
                 </TouchableHighlight>
+                <TouchableHighlight style={styles.btn} onPress={() => { this._showWebPage('Hello') }}>
+                    <View>
+                        <Image source={require('../../img/sphere.jpg')} style={styles.img} />
+                        <View style={styles.textContainer}>
+                            <Text style={styles.text}>Hello</Text>
+                            <Icon
+                                style={styles.itemNav}
+                                name='ios-arrow-forward-outline'
+                                size={35}
+                            ></Icon>
+                        </View>
+                    </View>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -138,6 +166,12 @@ const navigator = StackNavigator({
             title: 'Sphere'
         })
     },
+    Hello: {
+        screen: Hello,
+        navigationOptions: ({ navigation }) => ({
+            title: 'Hello'
+        })
+    }
 }, {
         headerMode: 'none'
     });

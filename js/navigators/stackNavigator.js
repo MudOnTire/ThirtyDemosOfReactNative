@@ -12,6 +12,7 @@ import Demo7 from '../demos/demo7';
 import Demo8 from '../demos/demo8';
 import Demo9 from '../demos/demo9';
 import Demo10 from '../demos/demo10';
+import Demo11 from '../demos/demo11';
 
 const navigator = StackNavigator({
     Home: {
@@ -77,7 +78,13 @@ const navigator = StackNavigator({
     Demo10: {
         screen: Demo10,
         navigationOptions: ({ navigation }) => ({
-            
+
+        })
+    },
+    Demo11: {
+        screen: Demo11,
+        navigationOptions: ({ navigation }) => ({
+            header: null
         })
     }
 });

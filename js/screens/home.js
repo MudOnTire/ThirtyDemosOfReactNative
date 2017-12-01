@@ -166,12 +166,19 @@ export default class Home extends Component {
                     size: 50,
                     color: '#2aa2ef'
                 }, {
-                    key: 24,
+                    key: 9,
                     title: 'Custom in-app browser',
                     isFA: false,
                     icon: 'ios-globe',
                     size: 50,
                     color: '#00ab6b',
+                },{
+                    key:10,
+                    title:'Tumblr Menu',
+                    isFA:false,
+                    icon:'logo-tumblr',
+                    size:50,
+                    color:'#37465c',
                 }
             ]
         }

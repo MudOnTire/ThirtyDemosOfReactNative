@@ -220,6 +220,7 @@ const Demo3Tab = TabNavigator({
 }, {
         tabBarPosition: 'bottom',
         tabBarOptions: {
+            showIcon:true,
             activeTintColor: '#fff',
             inactiveTintColor: '#fff',
             pressColor: '#fff',
