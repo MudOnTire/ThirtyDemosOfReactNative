@@ -26,7 +26,7 @@ var styles = StyleSheet.create({
     sideMenu: {
         position: 'absolute',
         width: sideMenuWidth + 20,
-        backgroundColor:'transparent'
+        backgroundColor: 'transparent'
     },
     sideMenuContainer: {
         width: sideMenuWidth,
@@ -45,6 +45,7 @@ var styles = StyleSheet.create({
         paddingRight: 15,
         paddingBottom: 15,
         paddingLeft: 15,
+        backgroundColor: '#000055',
     },
     imgContainer: {
         flexDirection: 'row',
@@ -56,27 +57,42 @@ var styles = StyleSheet.create({
         borderRadius: 30,
     },
     senary: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+    },
+    textContainer: {
+        paddingTop: 24,
     },
     username: {
-
+        fontWeight: 'bold',
+        color: '#fff',
+        lineHeight: 24,
     },
     email: {
-
+        color: '#fff',
+        lineHeight: 24,
     },
     btnContainer: {
-
+        paddingTop:10,
+        borderStyle:'dotted',
+        borderBottomWidth:1,
+        borderBottomColor:'#ccc',
     },
     btn: {
-
+        marginLeft:30,
+        flexDirection:'row',
+        height:44,
+        alignItems:'center',
     },
     btnIcon: {
-
+        width:60,
+        fontWeight:'bold',
+        color:'#333',
     },
     btnText: {
-
+        fontWeight:'bold',
+        color:'#333',
     }
 });
 
@@ -104,13 +120,57 @@ class Menu extends Component {
                 </View>
 
                 <View style={styles.btnContainer}>
-                    <TouchableHighlight underlayColor='#888' onPress={() => true}>
-                        <View style={styles.btn}>
-                            <Icon style={styles.btnIcon} name='map-marker' size={15}></Icon>
-                            <Text style={styles.btnText}></Text>
-                        </View>
-                    </TouchableHighlight>
-                </View>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="map-marker" size={15}></Icon>
+                    <Text style={styles.btnText}>你的地点</Text>
+                  </View>
+                </TouchableHighlight>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="pencil-square" size={15}></Icon>
+                    <Text style={styles.btnText}>你的贡献</Text>
+                  </View>
+                </TouchableHighlight>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="product-hunt" size={15}></Icon>
+                    <Text style={styles.btnText}>离线区域</Text>
+                  </View>
+                </TouchableHighlight>
+              </View>
+              <View style={styles.btnContainer}>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="road" size={15}></Icon>
+                    <Text style={styles.btnText}>实时路况</Text>
+                  </View>
+                </TouchableHighlight>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="bus" size={15}></Icon>
+                    <Text style={styles.btnText}>公交线路</Text>
+                  </View>
+                </TouchableHighlight>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="bicycle" size={15}></Icon>
+                    <Text style={styles.btnText}>骑车线路</Text>
+                  </View>
+                </TouchableHighlight>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="photo" size={15}></Icon>
+                    <Text style={styles.btnText}>卫星图像</Text>
+                  </View>
+                </TouchableHighlight>
+                <TouchableHighlight underlayColor="#888" onPress={() => { true }}>
+                  <View style={styles.btn}>
+                    <Icon style={styles.btnIcon} name="tree" size={15}></Icon>
+                    <Text style={styles.btnText}>地形</Text>
+                  </View>
+                </TouchableHighlight>
+              </View>
             </View>
         )
     }
@@ -205,11 +265,13 @@ export default class Demo8 extends Component {
         this._updatePosition();
         if (Platform.OS === 'ios') {
             StatusBar.setBarStyle(1);
+        } else {
+            StatusBar.setHidden(false);
         }
     }
 
     _hideSideMenu = () => {
-        
+
     }
 
     render() {
