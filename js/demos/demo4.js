@@ -110,6 +110,20 @@ class ParallelAnimation extends Component {
     }
 }
 
+class CombinedAnimation extends Component{
+    state={
+        anim:[1,2,3].map(()=>new Animated.Value(0))
+    }
+
+    componentDidMount(){
+        Animated.sequence([
+            Animated.stagger(200, this.state.anim.map(left=>{
+
+            }))
+        ])
+    }
+}
+
 // You can then use your `FadeInView` in place of a `View` in your components:
 export default class Demo4 extends React.Component {
     componentDidMount() {

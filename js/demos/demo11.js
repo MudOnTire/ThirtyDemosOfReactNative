@@ -128,7 +128,6 @@ const Demo11Tab = TabNavigator({
                 backgroundColor: '#36465D'
             },
             tabStyle: {
-                // backgroundColor:'#36465D'
                 padding: 0,
             },
             iconStyle: {
