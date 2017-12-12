@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image, TouchableHighlight } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableHighlight, Animated, Easing } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Util from '../utils';
@@ -92,10 +92,30 @@ class Me extends Component {
 }
 
 class PopupMenus extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            shift: new Animated.Value(-120)
+        }
+    }
+
+    _pushMenu = () => {
+        this.state.shift,
+            {
+                toValue: Util.size.width === 375 ? 50 : 30,
+                duration: 200,
+                delay: 100,
+                easing: Easing.elastic(1),
+            }
+    }
+
     render() {
         return (
             <Image source={require('../../img/tumblrblur.png')} style={styles.menus}>
+                <Animated.View>
 
+                </Animated.View>
             </Image>
         )
     }
@@ -177,21 +197,28 @@ export default class Demo11 extends Component {
         }
     }
 
-    _clickPublish = () => {
-        this.setState({
-            showMenus: true
-        });
-    }
-
     render() {
         return (
             <View style={{ flex: 1 }}>
-                {this.state.showMenus && <PopupMenus />}
+                {
+                    this.state.showMenus &&
+                    <TouchableHighlight onPress={() => {
+                        this.setState({
+                            showMenus: false
+                        });
+                    }}>
+                        <View>
+                            <PopupMenus />
+                        </View>
+                    </TouchableHighlight>
+                }
                 <Demo11Tab />
                 {
                     !this.state.showMenus &&
                     <TouchableHighlight style={styles.fakePublishBtn} onPress={() => {
-                        this._clickPublish();
+                        this.setState({
+                            showMenus: true
+                        });
                     }}>
                         <View style={styles.publishIcon}>
                             <Icon name="md-create" size={30} style={styles.tabIcon}></Icon>
