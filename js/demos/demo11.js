@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableHighlight } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Util from '../utils';
@@ -17,13 +17,36 @@ const styles = StyleSheet.create({
         paddingBottom: 3,
         backgroundColor: '#529ECC',
         borderRadius: 6,
+    },
+    homeImage: {
+        resizeMode: 'contain',
+        height: Util.size.height,
+        width: Util.size.width,
+    },
+    menus: {
+        height: Util.size.height,
+        width: Util.size.width,
+    },
+    fakePublishBtn: {
+        position: 'absolute',
+        left: (Util.size.width - 60) / 2,
+        bottom: 0,
+        width: 60,
+        height: 52,
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
 
 class Home extends Component {
     render() {
         return (
-            <View></View>
+            <View>
+                <Image
+                    style={styles.homeImage}
+                    source={require('../../img/tumblr.png')}>
+                </Image>
+            </View>
         )
     }
 }
@@ -31,7 +54,9 @@ class Home extends Component {
 class Search extends Component {
     render() {
         return (
-            <View></View>
+            <View>
+                <Text>Search</Text>
+            </View>
         )
     }
 }
@@ -39,7 +64,9 @@ class Search extends Component {
 class Publish extends Component {
     render() {
         return (
-            <View></View>
+            <View>
+                <Text>Publish</Text>
+            </View>
         )
     }
 }
@@ -47,7 +74,9 @@ class Publish extends Component {
 class Chat extends Component {
     render() {
         return (
-            <View></View>
+            <View>
+                <Text>Chat</Text>
+            </View>
         )
     }
 }
@@ -55,7 +84,19 @@ class Chat extends Component {
 class Me extends Component {
     render() {
         return (
-            <View></View>
+            <View>
+                <Text>Me</Text>
+            </View>
+        )
+    }
+}
+
+class PopupMenus extends Component {
+    render() {
+        return (
+            <Image source={require('../../img/tumblrblur.png')} style={styles.menus}>
+
+            </Image>
         )
     }
 }
@@ -82,16 +123,7 @@ const Demo11Tab = TabNavigator({
         })
     },
     Publish: {
-        screen: Publish,
-        navigationOptions: ({ navigation }) => ({
-            tabBarIcon: ({ focused }) => {
-                return (
-                    <View style={styles.publishIcon}>
-                        <Icon name="md-create" size={30} style={styles.tabIcon}></Icon>
-                    </View>
-                )
-            }
-        })
+        screen: Publish
     },
     Chat: {
         screen: Chat,
@@ -137,4 +169,36 @@ const Demo11Tab = TabNavigator({
         }
     });
 
-export default Demo11Tab;
+export default class Demo11 extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showMenus: false
+        }
+    }
+
+    _clickPublish = () => {
+        this.setState({
+            showMenus: true
+        });
+    }
+
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
+                {this.state.showMenus && <PopupMenus />}
+                <Demo11Tab />
+                {
+                    !this.state.showMenus &&
+                    <TouchableHighlight style={styles.fakePublishBtn} onPress={() => {
+                        this._clickPublish();
+                    }}>
+                        <View style={styles.publishIcon}>
+                            <Icon name="md-create" size={30} style={styles.tabIcon}></Icon>
+                        </View>
+                    </TouchableHighlight>
+                }
+            </View>
+        )
+    }
+}
