@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         height: Util.size.height,
         width: Util.size.width,
     },
-    menus: {
+    menusBg: {
         height: Util.size.height,
         width: Util.size.width,
     },
@@ -35,7 +35,55 @@ const styles = StyleSheet.create({
         height: 52,
         justifyContent: 'center',
         alignItems: 'center',
-    }
+    },
+    menuContainer: {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: Util.size.width,
+        height: Util.size.height,
+    },
+    menuImg: {
+        width: 120,
+        height: 100,
+        resizeMode: "contain",
+    },
+    menuText: {
+        width: 120,
+        textAlign: "center",
+        color: "#fff",
+        backgroundColor: "transparent"
+    },
+    menuItem1: {
+        position: "absolute",
+        left: 50,
+        top: 80
+    },
+    menuItem3: {
+        position: "absolute",
+        left: 50,
+        top: 250
+    },
+    menuItem5: {
+        position: "absolute",
+        left: 50,
+        top: 420
+    },
+    menuItem2: {
+        position: "absolute",
+        right: 50,
+        top: 80
+    },
+    menuItem4: {
+        position: "absolute",
+        right: 50,
+        top: 250
+    },
+    menuItem6: {
+        position: "absolute",
+        right: 50,
+        top: 420
+    },
 })
 
 class Home extends Component {
@@ -87,36 +135,6 @@ class Me extends Component {
             <View>
                 <Text>Me</Text>
             </View>
-        )
-    }
-}
-
-class PopupMenus extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            shift: new Animated.Value(-120)
-        }
-    }
-
-    _pushMenu = () => {
-        this.state.shift,
-            {
-                toValue: Util.size.width === 375 ? 50 : 30,
-                duration: 200,
-                delay: 100,
-                easing: Easing.elastic(1),
-            }
-    }
-
-    render() {
-        return (
-            <Image source={require('../../img/tumblrblur.png')} style={styles.menus}>
-                <Animated.View>
-
-                </Animated.View>
-            </Image>
         )
     }
 }
@@ -193,8 +211,45 @@ export default class Demo11 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showMenus: false
+            showMenus: false,
+            shift: new Animated.Value(-120),
+            menuBgOpacity: new Animated.Value(1),
         }
+    }
+
+    _pushMenus = () => {
+        Animated.timing(
+            this.state.menuBgOpacity,
+            {
+                toValue: 1,
+                duration: 100
+            }).start();
+        Animated.timing(
+            this.state.shift,
+            {
+                toValue: Util.size.width === 375 ? 50 : 30,
+                duration: 200,
+                delay: 100,
+                easing: Easing.elastic(1),
+            }).start();
+    }
+
+    _popMenus = () => {
+        Animated.timing(
+            this.state.shift,
+            {
+                toValue: -120,
+                duration: 200,
+                delay: 100,
+                easing: Easing.elastic(1),
+            }
+        ).start(() => {
+            setTimeout(() => {
+                this.setState({
+                    showMenus: false,
+                })
+            }, 200);
+        });
     }
 
     render() {
@@ -203,23 +258,50 @@ export default class Demo11 extends Component {
                 {
                     this.state.showMenus &&
                     <TouchableHighlight onPress={() => {
-                        this.setState({
-                            showMenus: false
-                        });
+                        this._popMenus();
                     }}>
-                        <View>
-                            <PopupMenus />
-                        </View>
+                        <Animated.View style={{ opacity: this.state.menuBgOpacity }}>
+                            <Image source={require('../../img/tumblrblur.png')} style={styles.menusBg}></Image>
+                            <View style={styles.menuContainer}>
+                                <Animated.View style={[styles.menuItem1, { left: this.state.shift }]}>
+                                    <Image style={styles.menuImg} source={require('../../img/tumblr-text.png')}></Image>
+                                    <Text style={styles.menuText}>Text</Text>
+                                </Animated.View>
+                                <Animated.View style={[styles.menuItem2, { right: this.state.shift }]}>
+                                    <Image style={styles.menuImg} source={require('../../img/tumblr-photo.png')}></Image>
+                                    <Text style={styles.menuText}>photo</Text>
+                                </Animated.View>
+                                <Animated.View style={[styles.menuItem3, { left: this.state.shift }]}>
+                                    <Image style={styles.menuImg} source={require('../../img/tumblr-quote.png')}></Image>
+                                    <Text style={styles.menuText}>Quote</Text>
+                                </Animated.View>
+                                <Animated.View style={[styles.menuItem4, { right: this.state.shift }]}>
+                                    <Image style={styles.menuImg} source={require('../../img/tumblr-link.png')}></Image>
+                                    <Text style={styles.menuText}>Link</Text>
+                                </Animated.View>
+                                <Animated.View style={[styles.menuItem5, { left: this.state.shift }]}>
+                                    <Image style={styles.menuImg} source={require('../../img/tumblr-chat.png')}></Image>
+                                    <Text style={styles.menuText}>Chat</Text>
+                                </Animated.View>
+                                <Animated.View style={[styles.menuItem6, { right: this.state.shift }]}>
+                                    <Image style={styles.menuImg} source={require('../../img/tumblr-audio.png')}></Image>
+                                    <Text style={styles.menuText}>Audio</Text>
+                                </Animated.View>
+                            </View>
+                        </Animated.View>
                     </TouchableHighlight>
                 }
                 <Demo11Tab />
                 {
                     !this.state.showMenus &&
-                    <TouchableHighlight style={styles.fakePublishBtn} onPress={() => {
-                        this.setState({
-                            showMenus: true
-                        });
-                    }}>
+                    <TouchableHighlight
+                        underlayColor='rgba(0,0,0,0)'
+                        style={styles.fakePublishBtn} onPress={() => {
+                            this.setState({
+                                showMenus: true
+                            });
+                            this._pushMenus();
+                        }}>
                         <View style={styles.publishIcon}>
                             <Icon name="md-create" size={30} style={styles.tabIcon}></Icon>
                         </View>
