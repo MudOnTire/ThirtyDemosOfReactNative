@@ -13,6 +13,8 @@ import Demo8 from '../demos/demo8';
 import Demo9 from '../demos/demo9';
 import Demo10 from '../demos/demo10';
 import Demo11 from '../demos/demo11';
+import Demo12 from '../demos/demo12';
+import Demo13 from '../demos/demo13';
 
 const navigator = StackNavigator({
     Home: {
@@ -83,6 +85,18 @@ const navigator = StackNavigator({
     },
     Demo11: {
         screen: Demo11,
+        navigationOptions: ({ navigation }) => ({
+            header: null
+        })
+    },
+    Demo12: {
+        screen: Demo12,
+        navigationOptions: ({ navigation }) => ({
+            title: 'OpenGL'
+        })
+    },
+    Demo13: {
+        screen: Demo13,
         navigationOptions: ({ navigation }) => ({
             header: null
         })

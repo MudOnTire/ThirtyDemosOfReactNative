@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
     },
     fakePublishBtn: {
         position: 'absolute',
-        left: (Util.size.width - 60) / 2,
+        left: Util.size.width * 2 / 5,
         bottom: 0,
-        width: 60,
+        width: Util.size.width / 5,
         height: 52,
         justifyContent: 'center',
         alignItems: 'center',
@@ -185,6 +185,7 @@ const Demo11Tab = TabNavigator({
     },
 }, {
         tabBarPosition: 'bottom',
+        swipeEnabled: false,
         tabBarOptions: {
             showIcon: true,
             showLabel: false,
@@ -227,7 +228,7 @@ export default class Demo11 extends Component {
         Animated.timing(
             this.state.shift,
             {
-                toValue: Util.size.width === 375 ? 50 : 30,
+                toValue: Util.size.width / 4 - 60,
                 duration: 200,
                 delay: 100,
                 easing: Easing.elastic(1),

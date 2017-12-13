@@ -3,6 +3,7 @@ package com.thirtydemosofreactnative;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.projectseptember.RNGL.RNGLPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.airbnb.android.react.maps.MapsPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNGLPackage(),
             new ReactVideoPackage(),
             new VectorIconsPackage(),
             new MapsPackage()

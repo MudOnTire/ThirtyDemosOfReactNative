@@ -172,13 +172,27 @@ export default class Home extends Component {
                     icon: 'ios-globe',
                     size: 50,
                     color: '#00ab6b',
+                }, {
+                    key: 10,
+                    title: 'Tumblr Menu',
+                    isFA: false,
+                    icon: 'logo-tumblr',
+                    size: 50,
+                    color: '#37465c',
+                }, {
+                    key: 11,
+                    title: 'OpenGL',
+                    isFA: false,
+                    icon: 'md-contrast',
+                    size: 50,
+                    color: '#2f3600',
                 },{
-                    key:10,
-                    title:'Tumblr Menu',
+                    key:12,
+                    title:'tweet',
                     isFA:false,
-                    icon:'logo-tumblr',
+                    icon:'md-chatboxes',
                     size:50,
-                    color:'#37465c',
+                    color:'#83709d',
                 }
             ]
         }

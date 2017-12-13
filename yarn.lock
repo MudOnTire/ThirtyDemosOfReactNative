@@ -1694,6 +1694,19 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+gl-react-native@^2.47.0:
+  version "2.47.0"
+  resolved "http://registry.npm.taobao.org/gl-react-native/download/gl-react-native-2.47.0.tgz#0d2418314973f6bd3bd7f83acf776caa61339baf"
+  dependencies:
+    invariant "2.2.0"
+
+gl-react@^2.3.1:
+  version "2.3.1"
+  resolved "http://registry.npm.taobao.org/gl-react/download/gl-react-2.3.1.tgz#4a153eba80ad926a5474e8b5615f12b0288b6dc9"
+  dependencies:
+    invariant "2.2.1"
+    prop-types "^15.5.10"
+
 glob-base@^0.3.0:
   version "0.3.0"
   resolved "http://registry.npm.taobao.org/glob-base/download/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4"
@@ -1951,6 +1964,18 @@ inquirer@^3.0.6:
     string-width "^2.1.0"
     strip-ansi "^4.0.0"
     through "^2.3.6"
+
+invariant@2.2.0:
+  version "2.2.0"
+  resolved "http://registry.npm.taobao.org/invariant/download/invariant-2.2.0.tgz#c8d7e847366a49cc18b622f058a689d481e895f2"
+  dependencies:
+    loose-envify "^1.0.0"
+
+invariant@2.2.1:
+  version "2.2.1"
+  resolved "http://registry.npm.taobao.org/invariant/download/invariant-2.2.1.tgz#b097010547668c7e337028ebe816ebe36c8a8d54"
+  dependencies:
+    loose-envify "^1.0.0"
 
 invariant@^2.2.2:
   version "2.2.2"
