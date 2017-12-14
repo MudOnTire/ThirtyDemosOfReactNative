@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { StatusBar, View, StyleSheet, Image, TextInput, CameraRoll, TouchableHighlight, Text, Keyboard, Button, Alert } from 'react-native';
+import { StatusBar, View, StyleSheet, Image, TextInput, CameraRoll, TouchableHighlight, Text, Keyboard, Button, Alert, Animated, Easing } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PropTypes from 'prop-types';
 import Util from '../utils';
 
-const functionViewHeight = 50;
+const toolBarHeight = 50;
 
 const styles = StyleSheet.create({
     container: {
@@ -28,16 +28,17 @@ const styles = StyleSheet.create({
     },
     functionViewContainer: {
         position: 'absolute',
-        height: functionViewHeight,
-        width: Util.size.width,
         left: 0,
     },
     functionContainer: {
-        height: functionViewHeight,
-        justifyContent: 'space-between',
-        flexDirection: 'row',
+        width: Util.size.width,
         borderTopWidth: 1,
         borderTopColor: '#ccc',
+    },
+    toolBar: {
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
         paddingRight: 8,
     },
@@ -47,7 +48,8 @@ const styles = StyleSheet.create({
     },
     functionIcon: {
         width: 50,
-        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     functionRight: {
         flexDirection: 'row',
@@ -64,6 +66,22 @@ const styles = StyleSheet.create({
     remainCount: {
         fontSize: 16,
         marginRight: 10,
+    },
+    imageGrid: {
+        flexDirection: 'row',
+        borderTopWidth: 1,
+        borderTopColor: '#ccc',
+    },
+    imageIcon: {
+        width: Util.size.width / 4,
+        height: Util.size.width / 4,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+        borderRightWidth: 1,
+        borderRightColor: '#ccc',
+
     }
 });
 
@@ -80,8 +98,23 @@ class FuntionView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            images: []
+            images: [],
+            functionViewHeight: new Animated.Value(toolBarHeight),
         }
+    }
+
+    componentWillMount() {
+        this.keyboardDidShowListner = Keyboard.addListener('keyboardDidShow', () => {
+            Animated.timing(
+                this.state.functionViewHeight,
+                {
+                    toValue: toolBarHeight,
+                    duration: 100,
+                    delay: 0,
+                    easing: Easing.elastic(1),
+                }
+            ).start();
+        });
     }
 
     componentDidMount() {
@@ -112,22 +145,68 @@ class FuntionView extends Component {
 
     render() {
         return (
-            <View style={styles.functionContainer}>
-                <View style={styles.functionIcons}>
-                    <Icon style={styles.functionIcon} name='ios-pin' size={23} color='#8899a5'></Icon>
-                    <Icon style={styles.functionIcon} name='md-camera' size={23} color='#8899a5'></Icon>
-                    <Icon style={styles.functionIcon} name='md-image' size={23} color='#8899a5'></Icon>
-                    <Icon style={styles.functionIcon} name='md-pie' size={23} color='#8899a5'></Icon>
+            <Animated.View style={[styles.functionContainer, { height: this.state.functionViewHeight }]}>
+                <View style={styles.toolBar}>
+                    <View style={styles.functionIcons}>
+                        <TouchableHighlight style={styles.functionIcon} underlayColor='rgba(0,0,0,0)'>
+                            <Icon name='ios-pin' size={23} color='#8899a5'></Icon>
+                        </TouchableHighlight>
+                        <TouchableHighlight
+                            style={styles.functionIcon}
+                            onPress={
+                                () => {
+                                    Keyboard.dismiss();
+                                    Animated.timing(
+                                        this.state.functionViewHeight,
+                                        {
+                                            toValue: toolBarHeight + 240,
+                                            duration: 100,
+                                            delay: 0,
+                                            easing: Easing.elastic(1),
+                                        }
+                                    ).start();
+                                }
+                            } underlayColor='rgba(0,0,0,0)'>
+                            <Icon name='md-camera' size={23} color='#8899a5'></Icon>
+                        </TouchableHighlight>
+                        <TouchableHighlight underlayColor='rgba(0,0,0,0)' style={styles.functionIcon}>
+                            <Icon name='md-image' size={23} color='#8899a5'></Icon>
+                        </TouchableHighlight>
+                        <TouchableHighlight style={styles.functionIcon} underlayColor='rgba(0,0,0,0)'>
+                            <Icon name='md-pie' size={23} color='#8899a5'></Icon>
+                        </TouchableHighlight>
+                    </View>
+                    <View style={styles.functionRight}>
+                        <Text style={styles.remainCount}>
+                            {this.props.numsOfText}
+                        </Text>
+                        <TouchableHighlight style={styles.postBtn}>
+                            <Text style={{ color: '#fff', fontSize: 14 }}>发推</Text>
+                        </TouchableHighlight>
+                    </View>
                 </View>
-                <View style={styles.functionRight}>
-                    <Text style={styles.remainCount}>
-                        {this.props.numsOfText}
-                    </Text>
-                    <TouchableHighlight style={styles.postBtn}>
-                        <Text style={{ color: '#fff', fontSize: 14 }}>发推</Text>
-                    </TouchableHighlight>
+
+                <View style={styles.imageGrid}>
+                    <View style={styles.imageIcon}>
+                        <Icon name='ios-camera' size={80} color='#2aa2ef'></Icon>
+                    </View>
+                    <View style={styles.imageIcon}>
+                        <Icon name='ios-videocam' size={80} color='#2aa2ef'></Icon>
+                    </View>
+                    {
+                        this.state.images.map(
+                            (image, index) => {
+                                <View key={index} style={styles.imageIcon}>
+                                    <Image
+                                        style={styles.image}
+                                        source={{ uri: image.uri }}>
+                                    </Image>
+                                </View>
+                            }
+                        )
+                    }
                 </View>
-            </View>
+            </Animated.View>
         )
     }
 }
@@ -138,22 +217,9 @@ export default class Demo13 extends Component {
         super(props);
         this.state = {
             numsOfText: 140,
-            keyboardTopY: 0,
+            keyboardTopY: 2,
+            isEditing: false,
         }
-    }
-
-    componentWillMount() {
-        this.keyboardDidShowListner = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
-        this.keyboardDidHideListner = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
-    }
-
-    _keyboardDidShow(something) {
-        console.log(something);
-        console.log('Keyboard Shown');
-    }
-
-    _keyboardDidHide() {
-        console.log('Keyboadr Hidden');
     }
 
     _updateTextNum = (text) => {
@@ -189,7 +255,7 @@ export default class Demo13 extends Component {
                 </View>
                 <TextInput
                     ref='textArea'
-                    style={[styles.textArea, { height: Util.size.height - this.state.keyboardTopY - 60 - functionViewHeight }]}
+                    style={[styles.textArea, { height: Util.size.height - this.state.keyboardTopY - 60 - toolBarHeight }]}
                     maxLength={140}
                     multiline={true}
                     placeholder="有什么新鲜事？"
@@ -197,10 +263,12 @@ export default class Demo13 extends Component {
                     placeholderTextColor='#bdc7cd'
                     onChangeText={this._updateTextNum}
                     underlineColorAndroid='transparent'
+                    onFocus={() => this.setState({ isEditing: true })}
+                    onBlur={() => this.setState({ isEditing: false })}
                 >
                 </TextInput>
-                <View style={[styles.functionViewContainer, { bottom: this.state.keyboardTopY }]}>
-                    <FuntionView numsOfText={this.state.numsOfText} />
+                <View style={[styles.functionViewContainer, { bottom: 0 }]}>
+                    <FuntionView numsOfText={this.state.numsOfText} isEditing={this.state.isEditing} />
                 </View>
             </View>
         )
