@@ -1,8 +1,12 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+
+var styles = StyleSheet.create({
+
+});
 
 class Card extends Component {
     static propTypes = {
@@ -12,9 +16,11 @@ class Card extends Component {
         img: PropTypes.string.isRequired,
     }
 
-    render(){
+    render() {
         return (
-            <View></View>
+            <View style={[styles.card, { top: this.props.top, width: this.props.width, left: this.props.left }]}>
+
+            </View>
         )
     }
 }
@@ -22,7 +28,9 @@ class Card extends Component {
 export default class Demo14 extends Component {
     render() {
         return (
-            <View></View>
+            <View>
+
+            </View>
         );
     }
 }
