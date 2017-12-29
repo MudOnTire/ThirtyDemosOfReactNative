@@ -25,7 +25,7 @@ const shaders = GL.Shaders.create({
             varying vec2 uv;
             uniform float value;
             void main(){
-                gl_FragColor=vec4(uv.x,uv.y,value,1.0);
+                gl_FragColor = vec4(uv.x,uv.y,value,1.0);
             }
         `
     }

@@ -193,6 +193,13 @@ export default class Home extends Component {
                     icon:'md-chatboxes',
                     size:50,
                     color:'#83709d',
+                },{
+                    key:13,
+                    title:'tinder',
+                    isFA:true,
+                    icon:'fire',
+                    size:50,
+                    color:'#ff6b6b',
                 }
             ]
         }

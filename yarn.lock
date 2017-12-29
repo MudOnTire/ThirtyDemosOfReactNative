@@ -3374,6 +3374,13 @@ react-native-scrollable-tab-view@^0.8.0:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.3"
 
+react-native-swipe-cards@^0.1.1:
+  version "0.1.1"
+  resolved "http://registry.npm.taobao.org/react-native-swipe-cards/download/react-native-swipe-cards-0.1.1.tgz#25a31b450f2616f3a25a101c9fc37ccbb2deb3e2"
+  dependencies:
+    clamp "^1.0.1"
+    prop-types "^15.6.0"
+
 react-native-swiper@^1.5.13:
   version "1.5.13"
   resolved "http://registry.npm.taobao.org/react-native-swiper/download/react-native-swiper-1.5.13.tgz#fa695cd4ab77b9a9df2d2bfee38ea7274dd07a2e"
