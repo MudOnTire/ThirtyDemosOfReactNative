@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#fff",
         height: Util.size.height,
-        width: Util.size.width
+        width: Util.size.width,
     },
     nav: {
         width: Util.size.width,
@@ -61,28 +61,53 @@ const styles = StyleSheet.create({
         paddingRight: 5
     },
     cardText: {
-
+        fontSize: 20,
+        fontWeight: "500",
+        color: "#423e39"
     },
     cardIcon: {
-
+        flexDirection: "row",
     },
     cardIconContainer: {
-
+        width: 50,
+        flexDirection: "row",
+        alignItems: "center",
     },
     cardIconText: {
-
+        paddingLeft: 5,
+        fontWeight: "500",
+        fontSize: 16,
     },
     actionContainer: {
+        paddingLeft: 7.5,
+        paddingRight: 7.5,
         position: "absolute",
-        bottom: 20,
+        top: 520,
         flexDirection: 'row',
-
+        alignItems: "flex-start",
+        justifyContent: 'center',
+        width: Util.size.width,
     },
     smallAction: {
-
+        width: Util.size.width === 375 ? 70 : 60,
+        height: Util.size.width === 475 ? 70 : 60,
+        borderColor: "#f5f5f5",
+        borderWidth: 10,
+        borderRadius: 35,
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        paddingTop: 5,
     },
     largeAction: {
-
+        width: Util.size.width === 375 ? 110 : 100,
+        height: Util.size.width === 375 ? 110 : 100,
+        borderColor: "#f5f5f5",
+        borderWidth: 10,
+        borderRadius: 55,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: 5,
     }
 });
 
@@ -183,23 +208,23 @@ class SwipeCard extends Component {
         };
     }
 
-    handleYup(card) {
+    handleYup = (card) => {
         this.props.next();
     }
 
-    handleNope(card) {
+    handleNope = (card) => {
         this.props.next();
     }
 
     render() {
         return (
-            <SwipeCard
+            <SwipeCards
                 cards={this.state.cards}
                 renderCard={(cardData) => <SCard key={cardData.id}{...cardData} />}
                 handleYup={() => this.handleYup()}
                 handleNope={() => this.handleNope()}
-                showYup={false}
-                showNope={false}
+                showYup={true}
+                showNope={true}
             />
         )
     }
@@ -252,7 +277,7 @@ class Cards extends Component {
         return (
             <View>
                 {cards}
-                <SwipeCards next={() => this._next} />
+                <SwipeCard next={() => this._next} />
             </View>
         )
     }
