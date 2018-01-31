@@ -187,7 +187,7 @@ class SwipeCard extends Component {
     constructor() {
         super();
         const simgs = [
-            require('../../img/minion1.png'),
+            "https://photos.app.goo.gl/mAEyu113ti2RdPY12",
             require('../../img/minion2.png'),
             require('../../img/minion3.png'),
             require('../../img/minion4.png'),

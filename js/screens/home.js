@@ -186,20 +186,34 @@ export default class Home extends Component {
                     icon: 'md-contrast',
                     size: 50,
                     color: '#2f3600',
-                },{
-                    key:12,
-                    title:'tweet',
-                    isFA:false,
-                    icon:'md-chatboxes',
-                    size:50,
-                    color:'#83709d',
-                },{
-                    key:13,
-                    title:'tinder',
-                    isFA:true,
-                    icon:'fire',
-                    size:50,
-                    color:'#ff6b6b',
+                }, {
+                    key: 12,
+                    title: 'tweet',
+                    isFA: false,
+                    icon: 'md-chatboxes',
+                    size: 50,
+                    color: '#83709d',
+                }, {
+                    key: 13,
+                    title: 'tinder',
+                    isFA: true,
+                    icon: 'fire',
+                    size: 50,
+                    color: '#ff6b6b',
+                }, {
+                    key: 14,
+                    title: 'Timer Picker',
+                    isFA: false,
+                    icon: 'ios-calendar-outline',
+                    size: 50,
+                    color: '#ec240e'
+                }, {
+                    key: 15,
+                    title: "Gesture unlock",
+                    isFA: false,
+                    icon: "ios-unlock",
+                    size: 50,
+                    color: "#32A69B"
                 }
             ]
         }

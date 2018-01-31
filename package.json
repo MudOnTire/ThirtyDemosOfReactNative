@@ -11,6 +11,7 @@
 		"gl-react-native": "^2.47.0",
 		"react": "16.0.0",
 		"react-native": "0.50.3",
+		"react-native-gesture-password": "^0.3.1",
 		"react-native-maps": "^0.18.1",
 		"react-native-scrollable-tab-view": "^0.8.0",
 		"react-native-swipe-cards": "^0.1.1",
